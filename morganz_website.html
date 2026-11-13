@@ -1,0 +1,573 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Morganz Integrated Systems | CYBERFLOW® Irrigation Controller</title>
+  <meta name="description" content="Morganz Integrated Systems - CYBERFLOW® WiFi irrigation controller for smart landscapes and water saving." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a33;
+      --muted:#a9b5d1;
+      --text:#eef2ff;
+      --accent:#7ee7c7;
+      --accent2:#7aa2ff;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius:16px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(122,162,255,.18), transparent 50%),
+                  radial-gradient(1000px 700px at 80% 10%, rgba(126,231,199,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(11,18,32,.65);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .logo-dot{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+    }
+    .links{
+      display:flex; flex-wrap:wrap; gap:10px;
+      font-size:14px;
+    }
+    .links a{
+      text-decoration:none;
+      padding:8px 10px;
+      border:1px solid transparent;
+      border-radius:12px;
+      color:var(--muted);
+    }
+    .links a:hover{border-color:var(--border); color:var(--text)}
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(126,231,199,.18), rgba(122,162,255,.18));
+      border-color: rgba(126,231,199,.35);
+    }
+    .hero{
+      padding:56px 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: rgba(16,26,51,.85);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    h1{font-size:40px; line-height:1.15; margin:0 0 10px}
+    @media (max-width: 520px){h1{font-size:32px}}
+    h2{font-size:26px; margin:0 0 10px}
+    h3{font-size:18px; margin:0 0 8px}
+    p{margin:0 0 12px; color:var(--muted)}
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 520px){.kpis{grid-template-columns:1fr}}
+    .kpi{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.02);
+    }
+    .kpi strong{display:block; color:var(--text); font-size:18px}
+    .section{padding:22px 0}
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+    }
+    @media (max-width: 900px){.grid-2{grid-template-columns:1fr}}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    li{margin:6px 0}
+    .badge{
+      display:inline-block;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      background: rgba(255,255,255,.02);
+    }
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0}
+    table{
+      width:100%;
+      border-collapse: collapse;
+      overflow:hidden;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.02);
+    }
+    th, td{
+      padding:12px 10px;
+      border-bottom:1px solid var(--border);
+      vertical-align:top;
+      font-size:14px;
+      color:var(--muted);
+    }
+    th{color:var(--text); text-align:left; background: rgba(255,255,255,.03)}
+    tr:last-child td{border-bottom:none}
+    .check{color:var(--accent); font-weight:700}
+    .dash{opacity:.7}
+    footer{
+      padding:26px 0 46px;
+      border-top:1px solid var(--border);
+      margin-top:16px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 700px){.two-col{grid-template-columns:1fr}}
+    .input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    .hint{font-size:12px; color:var(--muted); margin-top:6px}
+    .small{font-size:13px}
+    .split-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Morganz home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span>Morganz Integrated Systems</span>
+      </a>
+      <nav class="links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#mission-vision">Mission & Vision</a>
+        <a href="#cyberflow">CYBERFLOW®</a>
+        <a href="#comparison">Models</a>
+        <a href="#who">Who Needs It</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="card">
+          <span class="badge">Smart Irrigation • Water Saving • Smart Agriculture</span>
+          <h1>Control your irrigation with confidence and save water with smart automation.</h1>
+          <p>
+            Morganz builds practical technology that helps landscapes and agricultural sites
+            use water efficiently through connected control, flexible scheduling, and easy management utilizing IoT technologes itegrated with sattelite information services.
+          </p>
+          <div class="split-actions">
+            <a class="btn primary" href="#cyberflow">Explore CYBERFLOW®</a>
+            <a class="btn" href="#contact">Request a quote</a>
+          </div>
+
+          <div class="kpis" role="list">
+            <div class="kpi" role="listitem">
+              <strong>Up to 16 valves</strong>
+              <span class="small">Per controller (model dependent)</span>
+            </div>
+            <div class="kpi" role="listitem">
+              <strong>Mobile control</strong>
+              <span class="small">Manage schedules from your phone</span>
+            </div>
+            <div class="kpi" role="listitem">
+              <strong>Water saving</strong>
+              <span class="small">Reduce waste with smarter scheduling & sensors</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Quick highlights</h2>
+          <ul>
+            <li>Solenoid valve control (up to 16 valves per controller)</li>
+            <li>Pump control and mist control (model dependent)</li>
+            <li>Flexible scheduling algorithm for different zones</li>
+            <li>Optional sensors and drift control (model dependent)</li>
+            <li>Water/weather-proof enclosure with waterproof sockets</li>
+            <li>Remote support possible via WiFi or mobile hotspot</li>
+            <li>3-year warranty</li>
+          </ul>
+          <div class="badges">
+            <span class="badge">Landscape irrigation</span>
+            <span class="badge">Farms & greenhouses</span>
+            <span class="badge">Villas & compounds</span>
+            <span class="badge">Commercial sites</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="grid-2">
+        <div class="card">
+          <h2>About Morganz</h2>
+          <p>
+            Morganz Integrated Systems provides technical solutions tailored to real-world needs,
+            with a focus on reliable systems that can be deployed quickly and managed easily.
+          </p>
+          <p>
+            We work across irrigation and smart agriculture applications to help customers reduce waste,
+            simplify operations, and improve consistency.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>What we deliver</h2>
+          <ul>
+            <li><strong>Water-saving control:</strong> smarter schedules and practical automation.</li>
+	<li><strong>Agricultural Projects Control:</strong> Fish farms, poultry and animal production systems to be monitored and controlled using our wide range of controllers equipped with various sensors.</li>
+<li><strong>Greenhouse control:</strong> smart control of greenhouse environment, irrigation and fertigation.</li>
+<li><strong>Adaptive control:</strong> Smart control system could be integrated to weather stations or satellite information resources to provide an adaptive control based on the collected data.</li>
+            <li><strong>Simple operations:</strong> easy setup and management on mobile.</li>
+            <li><strong>Supportability:</strong> systems designed to troubleshoot fast when needed.</li>
+            <li><strong>Customization:</strong> business solutions and tailored controllers upon request.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mission-vision" class="section">
+    <div class="wrap">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Mission</h2>
+          <p>
+            Morganz’s mission is to help community <strong>use natural resources efficiently</strong> while maximizing performance by delivering
+            <strong>smart, reliable, and easy-to-use control systems</strong> for irrigation and food systems, thanks for the modern AI, IoT and Sattelite informatin technologies.
+            We reduce waste through intelligent scheduling, connected monitoring, and practical automation
+            that supports healthier plants / animals while lowering effort and operating costs.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Vision</h2>
+          <p>
+            Morganz’s vision is a future where <strong>every landscape and farm is managed intelligently</strong>,
+            achieving <strong>measurable water savings</strong> with better results.
+            We aim to make <strong>smart agriculture and sustainable irrigation</strong> accessible at every scale,
+            from home gardens to large commercial and agricultural sites.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cyberflow" class="section">
+    <div class="wrap">
+      <div class="card">
+        <span class="badge">Product</span>
+        <h2>CYBERFLOW® WiFi Irrigation Controller</h2>
+        <p>
+          CYBERFLOW® enables end users to control irrigation via a mobile application.
+          It is built for flexible scheduling, easy connectivity, and efficient water use that gives users peace of mind and convenience.
+        </p>
+
+        <div class="grid-2" style="margin-top:14px">
+          <div>
+            <h3>Technical features</h3>
+            <ul>
+              <li>Solenoid valve control (up to 16 valves per controller)</li>
+              <li>Motor pump control</li>
+              <li>Mist control support (optional depending on model)</li>
+              <li>Easy to use via mobile app (and Google Home app support as listed)</li>
+              <li>Designed for mobility and minimal wiring</li>
+              <li>Highly flexible scheduling algorithm</li>
+              <li>Sensors can be connected (model dependent)</li>
+              <li>Water/weather-proof enclosure</li>
+              <li>Waterproof sockets (no professional technician required)</li>
+              <li>Remote support access when convenient via WiFi/mobile hotspot</li>
+              <li>Easy online/offline access</li>
+              <li>Customizable upon request</li>
+              <li>3-year warranty</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Common use cases</h3>
+            <ul>
+              <li>Home gardens, lawns, and villas</li>
+              <li>Compounds and residential communities with multiple zones</li>
+              <li>Hotels, resorts, clubs, and commercial landscapes</li>
+              <li>Farms and greenhouses moving toward smart agriculture</li>
+              <li>Sites that want better control over water use and irrigation consistency</li>
+            </ul>
+
+            <div class="badges">
+              <span class="badge">WiFi control</span>
+              <span class="badge">Scheduling</span>
+              <span class="badge">Pump control</span>
+              <span class="badge">Mist support</span>
+              <span class="badge">Sensor-ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparison" class="section">
+    <div class="wrap">
+      <div class="card">
+        <h2>Product comparison (models)</h2>
+        <p class="small">✔ Available • — Not available • Optional: requires additional configuration</p>
+
+        <table aria-label="CYBERFLOW product comparison">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>ME‑Dv01</th>
+              <th>ME‑Dv02</th>
+              <th>ME‑Dv04</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Motor pump control</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+            </tr>
+            <tr>
+              <td>Valve capacity</td>
+              <td>1 valve</td>
+              <td>2 valves</td>
+              <td>4–16 valves</td>
+            </tr>
+            <tr>
+              <td>Scheduling programs</td>
+              <td>Up to 15</td>
+              <td>Up to 5</td>
+              <td>Up to 4</td>
+            </tr>
+            <tr>
+              <td>Solar panel support</td>
+              <td>Optional</td>
+              <td>Optional</td>
+              <td class="dash">—</td>
+            </tr>
+            <tr>
+              <td>12V adaptor</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+            </tr>
+            <tr>
+              <td>24V transformer</td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+            </tr>
+            <tr>
+              <td>Mist system support</td>
+              <td>Optional</td>
+              <td>Optional</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Connectable sensors</td>
+              <td>1</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Sensor drift control</td>
+              <td>1</td>
+              <td>1</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Power cut-off protection</td>
+              <td class="check">✔</td>
+              <td class="check">✔</td>
+              <td class="dash">—</td>
+            </tr>
+            <tr>
+              <td>PV support</td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+              <td class="dash">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="who" class="section">
+    <div class="wrap">
+      <div class="card">
+        <h2>Who needs CYBERFLOW?</h2>
+        <p>
+          CYBERFLOW is a good fit for anyone who wants <strong>simpler irrigation control</strong> and
+          <strong>real water savings</strong>, especially when watering needs change with weather and seasons.
+        </p>
+        <div class="grid-2" style="margin-top:14px">
+          <div>
+            <h3>Typical customers</h3>
+            <ul>
+              <li>Homeowners with gardens or lawns</li>
+              <li>Villas, compounds, and residential communities with multiple zones</li>
+              <li>Landscaping and facility management companies maintaining many sites</li>
+              <li>Farms and greenhouses moving toward smart agriculture</li>
+              <li>Hotels, resorts, clubs, and commercial landscapes</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Quick model guidance</h3>
+            <ul>
+              <li><strong>ME‑Dv01:</strong> 1 valve setups needing smart control.</li>
+              <li><strong>ME‑Dv02:</strong> 2 valve setups, optional solar.</li>
+              <li><strong>ME‑Dv04:</strong> 4–16 valves for larger sites and more zones.</li>
+            </ul>
+            <p class="hint">
+              If you share typical “number of valves/zones” and whether pump/mist is required,
+              you can place customers into the right model faster.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Contact</h2>
+          <p>
+            For inquiries, business solutions and customized controllers, Do not hesitate to contact Morganz.
+          </p>
+          <ul>
+            <li><strong>Company:</strong> MORGANZ INTEGRATED SYSTEMS</li>
+            <li><strong>Website:</strong> <a href="https://www.morganz.cloud" target="_blank" rel="noopener">www.morganz.cloud</a></li>
+            <li><strong>Email:</strong> <a href="mailto:smart@morganz.com">smart@morganz.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+201280008532">+20 128 000 8532</a></li>
+            <li><strong>Technical office:</strong> <a href="tel:+201063756538">+20 106 375 6538</a></li>
+            <li><strong>Address:</strong> Technology Innovation & Entrepreneurship Center (TIEC), Smart Village, Building B5, Cairo–Alexandria Desert Road, Giza, Egypt (P.O. Box 2577)</li>
+          </ul>
+          <p class="hint">
+            Tip: Add a WhatsApp button if this is your primary sales channel in Egypt.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Request information</h2>
+          <p class="small">This form is a front-end example. You can connect it to email or a CRM later.</p>
+
+          <form onsubmit="event.preventDefault(); alert('Form submitted (demo). Connect this form to email/CRM on your server.');">
+            <div class="two-col">
+              <div>
+                <label class="small" for="name">Full name</label>
+                <input class="input" id="name" name="name" required placeholder="Your name" />
+              </div>
+              <div>
+                <label class="small" for="phone">Phone / WhatsApp</label>
+                <input class="input" id="phone" name="phone" required placeholder="+20..." />
+              </div>
+            </div>
+
+            <div style="margin-top:10px">
+              <label class="small" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" placeholder="name@email.com" />
+            </div>
+
+            <div class="two-col" style="margin-top:10px">
+              <div>
+                <label class="small" for="zones">Number of valves/zones</label>
+                <input class="input" id="zones" name="zones" placeholder="e.g., 4, 8, 12" />
+              </div>
+              <div>
+                <label class="small" for="site">Site type</label>
+                <input class="input" id="site" name="site" placeholder="Home, Farm, Hotel, Compound..." />
+              </div>
+            </div>
+
+            <div style="margin-top:10px">
+              <label class="small" for="msg">Message</label>
+              <textarea id="msg" name="msg" placeholder="Tell us about your irrigation system and requirements..."></textarea>
+              <div class="hint">Include whether you need pump control, mist, sensors, and power conditions.</div>
+            </div>
+
+            <div class="split-actions">
+              <button class="btn primary" type="submit">Send request</button>
+              <a class="btn" href="mailto:smart@morganz.com?subject=CYBERFLOW%20Inquiry">Email directly</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;">
+      <div>© <span id="year"></span> Morganz Integrated Systems. All rights reserved.</div>
+      <div class="small">CYBERFLOW® Irrigation Controller • Smart irrigation for water saving</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
